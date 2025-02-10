@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+        <script src="https://cdn.tailwindcss.com"></script>
+    </head>
+    <body>
+        <div class="relative min-h-screen">
+            <!-- nav bar -->
+            <div class="flex justify-center absolute top-7 left-0 w-full z-20">
+                <div class="w-[90%] bg-white border flex justify-between px-6 py-5 max-w-[1600px]">
+                    <div class="font-extralight text-2xl cursor-pointer">Products</div>
+                    <div class="font-extralight text-2xl cursor-pointer">Documentation</div>
+                    <div class="font-extralight text-2xl cursor-pointer">Pricing</div>
+                    <div class="font-extralight text-2xl cursor-pointer bg-gradient-to-l from-purple-400 to-purple-700 text-transparent bg-clip-text">Develop</div>
+                </div>
+            </div>
+    
+            <!-- grid (background) -->
+            <div class="absolute inset-0 -z-10 opacity-40">
+                <div class="grid grid-cols-9 gap-0 w-full h-full after:content-[''] after:absolute after:top-0 after:left-0 after:w-full after:h-full after:bg-gradient-to-t after:from-white after:to-transparent" id="grid"></div>
+            </div>
+    
+            <!-- main content -->
+            <div class="relative z-10">
+                <!-- header text -->
+                <div class="w-full text-center pt-[300px] pb-20">
+                    <div class="text-6xl font-light">YOUR JOURNEY STARTS HERE</div>
+                    <div class="font-mono mt-3 text-gray-500">
+                        Join <span class="bg-gradient-to-l from-purple-400 to-purple-700 text-transparent bg-clip-text">vercel</span>,
+                        and become a part of the largest developer community ever
+                    </div>
+                    <button class="w-[170px] h-[45px] bg-white border mt-5 relative overflow-hidden group">
+                        <span class="relative z-10 group-hover:text-white transition-colors">GET STARTED</span>
+                        <div class="absolute inset-0 bg-gradient-to-r from-purple-400 to-purple-700 translate-x-[-100%] group-hover:translate-x-0 transition-transform duration-[200ms]"></div>
+                    </button>
+                </div>
+    
+                <!-- features -->
+                <div class="w-full h-auto p-10 mt-[500px]">
+                    <div class="pb-10 text-center font-mono">
+                        <div class="text-6xl font-light text-black pb-2">PASSION PROJECTS AND SPEC ADS</div>
+                        <div class="text-gray-500 text-lg">This is a selection of footage to showcase my skills</div>
+                    </div>
+                    <div class="w-full grid grid-cols-3 gap-7">
+                        <iframe class="w-full aspect-video" src="https://www.youtube.com/embed/mwXfVvboq0w?si=v7jPIZhwawZ_nOmy" frameborder="0" allowfullscreen></iframe>
+                        <iframe class="w-full aspect-video" src="https://www.youtube.com/embed/-SNJAuhpGK8?si=lA-moDFqpy9c2eoK" frameborder="0" allowfullscreen></iframe>
+                        <iframe class="w-full aspect-video" src="https://www.youtube.com/embed/ZeeROu3ME1c?si=KtBRbbX2vuMJ9N14" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            const grid = document.getElementById('grid');
+
+            // Create the grid items
+            for (let i = 0; i < 80; i++) {
+                const gridItem = document.createElement('div');
+                gridItem.classList.add('w-full', 'aspect-square', 'bg-white', 'border', 'border-gray-300', 'hover:bg-gray-200');
+                grid.appendChild(gridItem);
+            }
+
+            const gridItems = Array.from(grid.children);
+
+            setInterval(() => {
+                // First, reset all grid items to white
+                gridItems.forEach(item => {
+                    item.classList.remove('bg-gray-200');  // Remove the gray background
+                    item.classList.add('bg-white');        // Set them back to white
+                });
+
+                // Randomly select some grid items to turn gray
+                const count = Math.floor(Math.random() * gridItems.length);
+                const indices = [...Array(gridItems.length).keys()].sort(() => Math.random() - 0.5).slice(0, Math.min(count, 30));
+
+                // Apply the gray color to randomly selected grid items
+                indices.forEach(idx => {
+                    gridItems[idx].classList.remove('bg-white');  // Remove the white background
+                    gridItems[idx].classList.add('bg-gray-200');  // Apply the gray background
+                });
+            }, 1000);
+        </script>
+    </body>
+</html>
