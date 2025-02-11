@@ -14,7 +14,7 @@ setInterval(() => {
     });
     // Randomly select some grid items to turn gray
     const count = Math.floor(Math.random() * gridItems.length);
-    const indices = [...Array(gridItems.length).keys()].sort(() => Math.random() - 0.5).slice(0, Math.min(count, 30));
+    const indices = [...Array(gridItems.length).keys()].sort(() => Math.random() - 0.5).slice(0, Math.min(count, 25));
     // Apply the gray color to randomly selected grid items
     indices.forEach(idx => {
         gridItems[idx].classList.remove('bg-white');  // Remove the white background
