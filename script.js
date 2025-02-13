@@ -1,6 +1,6 @@
 const grid = document.getElementById('grid');
 // Create the grid items
-for (let i = 0; i < 70; i++) {
+for (let i = 0; i < 80; i++) {
     const gridItem = document.createElement('div');
     gridItem.classList.add('w-full', 'aspect-square', 'bg-white', 'border', 'border-gray-300', 'hover:bg-gray-200');
     grid.appendChild(gridItem);
